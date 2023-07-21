@@ -16,6 +16,16 @@ const serverlessConfiguration: AWS = {
       NODE_OPTIONS: "--enable-source-maps --stack-trace-limit=1000",
     },
   },
+  functions: {
+    checkInCardGenerator: {
+      handler: "src/functions/check-in-card-generator.handler",
+      events: [
+        {
+          http: { path: "check-in-card-generator", method: "get", cors: true },
+        },
+      ],
+    },
+  },
   package: { individually: true },
   custom: {
     esbuild: {
