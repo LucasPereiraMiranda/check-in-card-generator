@@ -3,7 +3,11 @@ import type { AWS } from "@serverless/typescript";
 const serverlessConfiguration: AWS = {
   service: "check-in-card-generator",
   frameworkVersion: "3",
-  plugins: ["serverless-esbuild", "serverless-offline"],
+  plugins: [
+    "serverless-esbuild",
+    "serverless-dynamodb-local",
+    "serverless-offline",
+  ],
   provider: {
     name: "aws",
     runtime: "nodejs16.x",
@@ -21,7 +25,7 @@ const serverlessConfiguration: AWS = {
       handler: "src/functions/check-in-card-generator.handler",
       events: [
         {
-          http: { path: "check-in-card-generator", method: "get", cors: true },
+          http: { path: "check-in-card-generator", method: "post", cors: true },
         },
       ],
     },
@@ -37,6 +41,40 @@ const serverlessConfiguration: AWS = {
       define: { "require.resolve": undefined },
       platform: "node",
       concurrency: 10,
+    },
+    dynamodb: {
+      stages: ["dev", "local"],
+      start: {
+        port: 8000,
+        inMemory: true,
+        migrate: true,
+      },
+    },
+  },
+  resources: {
+    Resources: {
+      dbCheckInCards: {
+        Type: "AWS::DynamoDB::Table",
+        Properties: {
+          TableName: "user_card",
+          ProvisionedThroughput: {
+            ReadCapacityUnits: 5,
+            WriteCapacityUnits: 5,
+          },
+          AttributeDefinitions: [
+            {
+              AttributeName: "id",
+              AttributeType: "S",
+            },
+          ],
+          KeySchema: [
+            {
+              AttributeName: "id",
+              KeyType: "HASH",
+            },
+          ],
+        },
+      },
     },
   },
 };
