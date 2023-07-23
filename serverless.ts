@@ -1,31 +1,32 @@
-import type { AWS } from "@serverless/typescript";
+import type { AWS } from '@serverless/typescript';
 
 const serverlessConfiguration: AWS = {
-  service: "check-in-card-generator",
-  frameworkVersion: "3",
+  service: 'check-in-card-generator',
+  frameworkVersion: '3',
   plugins: [
-    "serverless-esbuild",
-    "serverless-dynamodb-local",
-    "serverless-offline",
+    'serverless-esbuild',
+    'serverless-dynamodb-local',
+    'serverless-offline',
   ],
   provider: {
-    name: "aws",
-    runtime: "nodejs16.x",
+    name: 'aws',
+    runtime: 'nodejs16.x',
+    region: 'us-east-1',
     apiGateway: {
       minimumCompressionSize: 1024,
       shouldStartNameWithService: true,
     },
     environment: {
-      AWS_NODEJS_CONNECTION_REUSE_ENABLED: "1",
-      NODE_OPTIONS: "--enable-source-maps --stack-trace-limit=1000",
+      AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1',
+      NODE_OPTIONS: '--enable-source-maps --stack-trace-limit=1000',
     },
   },
   functions: {
     checkInCardGenerator: {
-      handler: "src/functions/check-in-card-generator.handler",
+      handler: 'src/functions/check-in-card-generator.handler',
       events: [
         {
-          http: { path: "check-in-card-generator", method: "post", cors: true },
+          http: { path: 'check-in-card-generator', method: 'post', cors: true },
         },
       ],
     },
@@ -36,14 +37,14 @@ const serverlessConfiguration: AWS = {
       bundle: true,
       minify: false,
       sourcemap: true,
-      exclude: ["aws-sdk"],
-      target: "node16",
-      define: { "require.resolve": undefined },
-      platform: "node",
+      exclude: ['aws-sdk'],
+      target: 'node16',
+      define: { 'require.resolve': undefined },
+      platform: 'node',
       concurrency: 10,
     },
     dynamodb: {
-      stages: ["dev", "local"],
+      stages: ['dev', 'local'],
       start: {
         port: 8000,
         inMemory: true,
@@ -54,23 +55,23 @@ const serverlessConfiguration: AWS = {
   resources: {
     Resources: {
       dbCheckInCards: {
-        Type: "AWS::DynamoDB::Table",
+        Type: 'AWS::DynamoDB::Table',
         Properties: {
-          TableName: "user_card",
+          TableName: 'user_card',
           ProvisionedThroughput: {
             ReadCapacityUnits: 5,
             WriteCapacityUnits: 5,
           },
           AttributeDefinitions: [
             {
-              AttributeName: "id",
-              AttributeType: "S",
+              AttributeName: 'id',
+              AttributeType: 'S',
             },
           ],
           KeySchema: [
             {
-              AttributeName: "id",
-              KeyType: "HASH",
+              AttributeName: 'id',
+              KeyType: 'HASH',
             },
           ],
         },
