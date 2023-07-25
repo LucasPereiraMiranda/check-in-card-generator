@@ -4,3 +4,7 @@ export interface ICreateCheckInCardRequest {
   courseCardName: string;
   classUrl: string;
 }
+
+export interface ICreateCheckInCardResponse {
+  id: string;
+}
