@@ -7,7 +7,10 @@ import { format, parseISO } from 'date-fns';
 import chromium from 'chrome-aws-lambda';
 import { uuid } from 'uuidv4';
 
-import { ICreateCheckInCardRequest } from './interfaces/create-check-in-card-request.interface';
+import {
+  ICreateCheckInCardRequest,
+  ICreateCheckInCardResponse,
+} from './interfaces/create-check-in-card-request.interface';
 import { validateRequestProps } from './validations';
 
 const saveCheckInCard = async (cardData: ICreateCheckInCardRequest) => {
@@ -114,6 +117,6 @@ export const handler: APIGatewayProxyHandler = async (event) => {
     statusCode: 201,
     body: JSON.stringify({
       id: uniqueCheckInCard.id,
-    }),
+    } as ICreateCheckInCardResponse),
   };
 };
