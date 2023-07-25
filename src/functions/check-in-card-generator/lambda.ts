@@ -108,7 +108,7 @@ export const handler: APIGatewayProxyHandler = async (event) => {
   );
 
   const content = await compileTemplate(formattedData, templatePath);
-  const pdf = await generatePdf(content);
+  await generatePdf(content);
 
   return {
     statusCode: 201,
