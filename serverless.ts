@@ -10,7 +10,7 @@ const serverlessConfiguration: AWS = {
   ],
   provider: {
     name: 'aws',
-    runtime: 'nodejs16.x',
+    runtime: 'nodejs14.x',
     region: 'us-east-1',
     apiGateway: {
       minimumCompressionSize: 1024,
@@ -30,7 +30,7 @@ const serverlessConfiguration: AWS = {
   },
   functions: {
     checkInCardGenerator: {
-      handler: 'src/functions/check-in-card-generator.handler',
+      handler: 'src/functions/check-in-card-generator/lambda.handler',
       events: [
         {
           http: { path: 'check-in-card-generator', method: 'post', cors: true },
@@ -45,10 +45,11 @@ const serverlessConfiguration: AWS = {
       minify: false,
       sourcemap: true,
       exclude: ['aws-sdk'],
-      target: 'node16',
+      target: 'node14',
       define: { 'require.resolve': undefined },
       platform: 'node',
       concurrency: 10,
+      external: ['chrome-aws-lambda'],
     },
     dynamodb: {
       stages: ['dev', 'local'],

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Check In Template</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Montserrat&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #222222;
+      color: #ffffff;
+      font-family: 'Montserrat', Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+    }
+
+    .check-in-certificate {
+      width: 100%;
+      max-width: 680px;
+      background-color: #333333;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      border-radius: 10px;
+      display: flex;
+    }
+
+    .left {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      max-width: 100%;
+
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+
+    .center {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 15px;
+    }
+
+    .right {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-left: 1px dashed #fff;
+
+    }
+
+    .title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .label {
+      font-size: 15px;
+      font-weight: bold;
+      color: #ffc107;
+    }
+
+    .name {
+      font-size: 15px;
+      margin: 10px 0;
+    }
+
+    .complete_text {
+      font-size: 10px;
+    }
+
+    .date {
+      margin-top: 8px;
+      font-size: 10px;
+    }
+
+    .course-link {
+      margin-top: 10px;
+    }
+
+    .course-link a {
+      color: #ffc107;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .course-link a:hover {
+      text-decoration: none;
+      color: #ffceea;
+    }
+
+    .id {
+      margin-top: 20px;
+      font-size: 9px;
+    }
+
+    strong {
+      color: #ffc107;
+      font-size: 10px;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="check-in-certificate">
+    <div class="left">
+      <img src="{{userAvatarUrl}}" alt="Avatar"/>
+    </div>
+    <div class="center">
+      <div class="title">
+        {{courseCardName}}
+      </div>
+      <div class="label">
+        Enrollment Certificate
+      </div>
+      <div class="name">
+        {{userName}}
+      </div>
+      <div class="date">
+        <strong>Emitted At:</strong> {{createdAt}}
+      </div>
+    </div>
+    <div class="right">
+      <div class="course-link">
+        <a href="{{classUrl}}" target="_blank">Course Link Here</a>
+      </div>
+      <div class="id">
+        <span>{{id}}</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
