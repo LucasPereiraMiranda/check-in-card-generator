@@ -41,6 +41,9 @@ const serverlessConfiguration: AWS = {
           http: { path: 'check-in-card-generator', method: 'post', cors: true },
         },
       ],
+      environment: {
+        GENERATE_S3_FILE: 'true',
+      },
     },
   },
   package: { individually: true },
