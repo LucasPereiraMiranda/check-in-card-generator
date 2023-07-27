@@ -6,6 +6,7 @@ import { readFileSync } from 'fs';
 import { format, parseISO } from 'date-fns';
 import chromium from 'chrome-aws-lambda';
 import { uuid } from 'uuidv4';
+import { S3 } from 'aws-sdk';
 
 import {
   ICreateCheckInCardRequest,
@@ -64,6 +65,18 @@ const generatePdf = async (content: string) => {
   return pdf;
 };
 
+const persistOnS3 = (id: string, pdf: Buffer) => {
+  const s3 = new S3();
+
+  s3.putObject({
+    Bucket: 'checkincard',
+    Key: `${id}.pdf`,
+    ACL: 'public-read-write',
+    Body: pdf,
+    ContentType: 'application/pdf',
+  }).promise();
+};
+
 const compileTemplate = async (
   data: ICreateCheckInCardRequest,
   templatePath: string
@@ -74,6 +87,8 @@ const compileTemplate = async (
 };
 
 export const handler: APIGatewayProxyHandler = async (event) => {
+  const generateS3File = process.env.GENERATE_S3_FILE === 'true';
+
   const validated = await validateRequestProps(JSON.parse(event.body));
 
   if (validated.hasInputError) {
@@ -111,12 +126,19 @@ export const handler: APIGatewayProxyHandler = async (event) => {
   );
 
   const content = await compileTemplate(formattedData, templatePath);
-  await generatePdf(content);
+  const pdf = await generatePdf(content);
+
+  if (generateS3File) {
+    persistOnS3(uniqueCheckInCard.id, pdf);
+  }
 
   return {
     statusCode: 201,
     body: JSON.stringify({
       id: uniqueCheckInCard.id,
+      url: generateS3File
+        ? `https://checkincard.s3.amazonaws.com/${uniqueCheckInCard.id}.pdf`
+        : './check-in-card.pdf',
     } as ICreateCheckInCardResponse),
   };
 };
