@@ -7,4 +7,5 @@ export interface ICreateCheckInCardRequest {
 
 export interface ICreateCheckInCardResponse {
   id: string;
+  url: string;
 }
