@@ -1,0 +1,39 @@
+{
+	"info": {
+		"_postman_id": "c98f2f0f-9e02-4d2e-a684-ea0955e452a5",
+		"name": "Check in card generator",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29277766"
+	},
+	"item": [
+		{
+			"name": "create check in card generator",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userName\": \"Lucas Pereira Miranda\",\n    \"userAvatarUrl\": \"https://github.com/LucasPereiraMiranda.png\",\n    \"courseCardName\": \"Node.js Streams\",\n    \"classUrl\": \"https://www.youtube.com/watch?v=r-33Hhbvr1M\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/dev/check-in-card-generator",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"dev",
+						"check-in-card-generator"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
