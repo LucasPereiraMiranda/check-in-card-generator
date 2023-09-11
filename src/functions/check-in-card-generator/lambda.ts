@@ -1,12 +1,12 @@
 import { APIGatewayProxyHandler } from 'aws-lambda';
-import { document } from '../../utils/dynamo-db-client';
+import { S3 } from 'aws-sdk';
+import chromium from 'chrome-aws-lambda';
+import { format, parseISO } from 'date-fns';
+import { readFileSync } from 'fs';
 import { compile } from 'handlebars';
 import { join } from 'path';
-import { readFileSync } from 'fs';
-import { format, parseISO } from 'date-fns';
-import chromium from 'chrome-aws-lambda';
 import { uuid } from 'uuidv4';
-import { S3 } from 'aws-sdk';
+import { document } from '../../utils/dynamo-db-client';
 
 import {
   ICreateCheckInCardRequest,
