@@ -67,3 +67,9 @@ $ yarn dynamodb:start
 # To initialize the Lambda function in the local environment, we can execute:
 $ yarn start:dev
 ```
+
+### 💻 Execution
+
+<h1 align="center">
+    <img alt="execution" title="#migrations" src=".github/images/execution.png" />
+</h1>
