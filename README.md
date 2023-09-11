@@ -79,3 +79,7 @@ $ yarn start:dev
 <h1 align="center">
     <img alt="generated check-in card" title="#migrations" src=".github/images/generated.png" />
 </h1>
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
