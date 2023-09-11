@@ -43,3 +43,27 @@ Check-in card generator lambda function was developed with these technologies
 This project's Lambda function has been developed with the primary objective of studying and exploring the core principles of the FAAS (Functions as a Service) concept, the serverless framework in general, and the AWS stack with Lambda and DynamoDB.
 
 This version provides a tool for generating check-in cards for online classrooms, welcoming new students to the class and offering a customized way to access the course.
+
+## :boom: Installation
+
+```bash
+# With NVM in our environment, we can use the Node version indicated in the .nvmrc file:
+$ nvm use
+
+# We can install the dependencies with:
+$ yarn install
+
+# To run the following processes, we need to have Serverless installed globally in the environment. To do this, we can execute:
+$ yarn add serverless - G
+
+# We can install the local DynamoDB with:
+$ yarn dynamodb:install
+
+# Note: To run the local DynamoDB simulator, we need to have Java installed in the environment.
+
+# In a new terminal, we can start DynamoDB with:
+$ yarn dynamodb:start
+
+# To initialize the Lambda function in the local environment, we can execute:
+$ yarn start:dev
+```
