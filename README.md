@@ -37,3 +37,9 @@ Check-in card generator lambda function was developed with these technologies
 - [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
 - [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
 - [Yup](https://www.npmjs.com/package/yup)
+
+## 💻 Project
+
+This project's Lambda function has been developed with the primary objective of studying and exploring the core principles of the FAAS (Functions as a Service) concept, the serverless framework in general, and the AWS stack with Lambda and DynamoDB.
+
+This version provides a tool for generating check-in cards for online classrooms, welcoming new students to the class and offering a customized way to access the course.
