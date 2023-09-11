@@ -22,3 +22,18 @@ Check-In Card Generator
     <img alt="GitHub license" src="https://img.shields.io/github/license/LucasPereiraMiranda/check-in-card-generator">
   </a>
 </p>
+
+<br>
+
+## 🚀 Techs
+
+Check-in card generator lambda function was developed with these technologies
+
+- [Serverless Framework](https://www.serverless.com/)
+- [Typescript](https://www.typescriptlang.org/)
+- [Aws Lambda](https://aws.amazon.com/pt/lambda/)
+- [Aws Dynamodb](https://aws.amazon.com/pt/dynamodb/)
+- [Handlebars](https://handlebarsjs.com/)
+- [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
+- [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
+- [Yup](https://www.npmjs.com/package/yup)
