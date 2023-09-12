@@ -42,7 +42,7 @@ const serverlessConfiguration: AWS = {
         },
       ],
       environment: {
-        GENERATE_S3_FILE: 'true',
+        GENERATE_S3_FILE: 'false',
       },
     },
   },
