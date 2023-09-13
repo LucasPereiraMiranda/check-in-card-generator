@@ -42,7 +42,7 @@ Check-in card generator lambda function was developed with these technologies
 - [Handlebars](https://handlebarsjs.com/)
 - [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
 - [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
-- [Yup](https://www.npmjs.com/package/yup)
+- [YUP](https://www.npmjs.com/package/yup)
 
 ## 💻 Project
 
