@@ -25,6 +25,12 @@ Check-In Card Generator
 
 <br>
 
+### :boom: Generated check-in card
+
+<h1 align="center">
+    <img alt="generated check-in card" title="#migrations" src=".github/images/generated.png" />
+</h1>
+
 ## 🚀 Techs
 
 Check-in card generator lambda function was developed with these technologies
@@ -72,12 +78,6 @@ $ yarn start:dev
 
 <h1 align="center">
     <img alt="execution" title="#migrations" src=".github/images/execution.png" />
-</h1>
-
-### :boom: Generated check-in card
-
-<h1 align="center">
-    <img alt="generated check-in card" title="#migrations" src=".github/images/generated.png" />
 </h1>
 
 ## License
